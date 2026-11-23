@@ -1,0 +1,1 @@
+Set GitHub secrets DOCKERHUB_USERNAME, DOCKERHUB_TOKEN, EC2_SSH_KEY, EC2_HOST (user@host), EC2_KNOWN_HOSTS. Provision an AWS EC2 VM with Docker, SSH access, and inbound web access. Use a public Docker Hub repository. Upload this question folder as repository root. Deployment URL is the actual EC2 public DNS after deployment; not provisioned here.

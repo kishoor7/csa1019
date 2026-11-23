@@ -1,0 +1,11 @@
+﻿Requirement,MoSCoW,Impact,Justification
+Search books by title and author,Must-Have,High,Core discovery; feasible using indexed search.
+Online book reservation,Must-Have,High,Core access workflow; manageable database changes.
+Monthly borrowed-book reports,Should-Have,High,Supports administrators; aggregate queries are feasible.
+Email overdue notifications,Should-Have,High,Reduces overdue books; requires email scheduling.
+QR scanning for borrow/return,Could-Have,Medium,Speeds circulation; needs scanner integration.
+Librarian dashboard,Must-Have,High,Essential day-to-day workflow; web UI is feasible.
+Review and rate books,Could-Have,Medium,Optional engagement; requires moderation.
+Assistance chatbot,Won’t-Have,Low,Not needed for MVP; added integration and upkeep.
+Mobile app version,Won’t-Have,Medium,Separate app exceeds initial time and budget.
+Multi-language support,Could-Have,Medium,Improves access; translation resources required.

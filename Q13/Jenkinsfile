@@ -1,0 +1,22 @@
+pipeline {
+  agent any
+  triggers { pollSCM('H/5 * * * *') }
+  stages {
+    stage('Checkout') { steps { checkout scm } }
+    stage('Build') { steps { sh 'docker build -t se-flask:ci .' } }
+    stage('Test') { steps { sh 'docker run --rm se-flask:ci python -m unittest -v' } }
+    stage('Deploy') {
+      when { branch 'main' }
+      steps {
+        sshagent(credentials: ['cloud-ssh-key']) {
+          withCredentials([string(credentialsId: 'cloud-host', variable: 'CLOUD_HOST')]) {
+            sh '''
+              docker save se-flask:ci | ssh "$CLOUD_HOST" 'docker load'
+              ssh "$CLOUD_HOST" 'docker rm -f se-flask || true; docker run -d --restart unless-stopped --name se-flask -p 80:5000 se-flask:ci'
+            '''
+          }
+        }
+      }
+    }
+  }
+}
